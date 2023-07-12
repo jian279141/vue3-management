@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 import Layout from '@/layout/index.vue';
+import tableRouter from './modules/table';
 
 export const constantRoutes = [
   {
@@ -118,7 +119,8 @@ export const asyncRoutes = [
         meta: { title: 'Export Selected' }
       }
     ]
-  }
+  },
+  tableRouter,
 ]
 
 const router = createRouter({

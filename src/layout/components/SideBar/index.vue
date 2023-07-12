@@ -5,6 +5,8 @@ import { usePermissionStore } from '@/store/modules/permission';
 import SidebarItem from './SidebarItem.vue'
 
 const permissionStore = usePermissionStore()
+console.log(permissionStore.permissionRoutes);
+
 </script>
 
 <script lang="ts">

@@ -37,3 +37,16 @@ export function parseTime(time: Time, cForm?: string) {
   })
   return time_str
 }
+
+export function timestampToTime(timestamp: number) {
+  var date = new Date(timestamp);
+  var Y = date.getFullYear() + "-";
+  var M =
+    (date.getMonth() + 1 < 10
+      ? "0" + (date.getMonth() + 1)
+      : date.getMonth() + 1) + "-";
+  var D = (date.getDate() < 10 ? "0" + date.getDate() : date.getDate()) + " ";
+  var h = date.getHours() + ":";
+  var m = date.getMinutes();
+  return Y + M + D + h + m;
+}

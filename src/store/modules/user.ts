@@ -1,6 +1,8 @@
 import { defineStore } from 'pinia'
 import { getToken, setToken, removeToken } from '@/utils/auth'
-import { login, getInfo } from '@/api/user'
+import { login, getInfo, logout } from '@/api/user'
+import { useTagsViewStore } from './tagsView'
+
 
 interface UserInfo {
   username: string
@@ -93,6 +95,22 @@ export const useUserStore = defineStore({
         removeToken()
         resolve()
       })
+    },
+    // user logout
+    logout() {
+      return new Promise<void>((resolve, reject) => {
+        logout(this.token).then(() => {
+          this.set_token('')
+          this.set_roles([])
+          this.resetToken()
+          useTagsViewStore().delAllViews()
+          resolve()
+        }).catch(error => {
+          reject(error)
+        })
+      }
+      )
     }
   }
-})
+}
+);

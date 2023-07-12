@@ -4,10 +4,15 @@ import Breadcrumb from '@/components/Breadcrumb/index.vue'
 import HeaderSearch from '@/components/HeaderSearch/index.vue'
 import ScreenFull from '@/components/ScreenFull/index.vue'
 import SizeSelect from '@/components/SizeSelect/index.vue'
+import { useUserStore } from "@/store/modules/user"
+import { useRouter } from 'vue-router'
 
+const userStore = useUserStore()
+const router = useRouter()
 
-const logout = () => {
-  console.log('logout')
+const logout = async () => {
+  await userStore.logout()
+  router.push('/login')
 }
 </script>
 <script lang="ts">
