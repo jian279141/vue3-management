@@ -36,7 +36,8 @@ router.beforeEach(async (to, from, next) => {
           })
           // hack方法 确保addRoutes已完成
           // set the replace: true, so the navigation will not leave a history record
-          next({ ...to, replace: true })
+          // 
+          next({ ...to })
         } catch (error) {
           console.log(error);
 

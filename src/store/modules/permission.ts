@@ -46,7 +46,7 @@ export const usePermissionStore = defineStore({
       this.addRoutes = routes
     },
     generateRoutes(roles: string[]) {
-      return new Promise(resolve => {
+      return new Promise<Array<any>>(resolve => {
         let accessedRoutes: RouteRecordRaw[]
         if (roles.includes('admin')) {
           accessedRoutes = asyncRoutes || []

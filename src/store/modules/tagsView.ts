@@ -85,7 +85,7 @@ export const useTagsViewStore = defineStore({
     add_view(view: any) {
       this.add_visited_view(view);
       this.add_cached_view(view);
-      console.log(this.visitedViews, this.cachedViews);
+      // console.log(this.visitedViews, this.cachedViews);
     },
     // 删除视图
     del_view(view: any) {

@@ -1,0 +1,17 @@
+@forward 'element-plus/theme-chalk/src/common/var.scss' with (
+
+    $colors: (
+
+        'primary': (
+
+            //主色
+
+            'base':green
+
+        )
+
+        //修改其他颜色在下边接着写就可以
+
+    )
+
+)

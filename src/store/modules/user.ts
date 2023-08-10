@@ -2,6 +2,8 @@ import { defineStore } from 'pinia'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import { login, getInfo, logout } from '@/api/user'
 import { useTagsViewStore } from './tagsView'
+import router, { resetRouter } from '@/router/index'
+import { usePermissionStore } from './permission'
 
 
 interface UserInfo {
@@ -63,7 +65,7 @@ export const useUserStore = defineStore({
     },
     // get user info
     getInfo() {
-      return new Promise<void>((resolve, reject) => {
+      return new Promise<string[]>((resolve, reject) => {
         getInfo(this.token).then(response => {
           const { data } = response
 
@@ -82,7 +84,7 @@ export const useUserStore = defineStore({
           this.set_name(name)
           this.set_avatar(avatar)
           this.set_introduction(introduction)
-          resolve()
+          resolve(data)
         }).catch(error => {
           reject(error)
         })
@@ -110,6 +112,29 @@ export const useUserStore = defineStore({
         })
       }
       )
+    },
+    // danamically modify permissions
+    async changRoles(role: string) {
+      const token = role + '-token'
+      this.set_token(token)
+      setToken(token)
+
+      const { roles } = await this.getInfo() as any
+      console.log(roles);
+
+
+      resetRouter()
+
+      // generate accessible routes map based on roles
+      const accessRoutes = await usePermissionStore().generateRoutes(roles)
+
+      accessRoutes.forEach((route: any) => {
+        router.addRoute(route)
+      }
+      )
+
+      // reset visited views and cached views
+      useTagsViewStore().delAllViews()
     }
   }
 }

@@ -51,10 +51,19 @@ export const constantRoutes = [
           affix: true
         }
       }]
-  }
+  },
+  // 为了防止刷新页面，动态添加的路由消失，导致not found，所以要在这里添加一下p
+  {
+    path: '/:catchAll(.*)*',
+    hidden: true,
+    // name: '404',不能加名字否则会导航到这个页面
+    component: () => import('@/views/error/404.vue'),
+    children: []
+  },
 ]
 
 export const asyncRoutes = [
+
   {
     path: '/permission',
     component: Layout,
@@ -120,6 +129,50 @@ export const asyncRoutes = [
       }
     ]
   },
+  {
+    path: '/pdf',
+    component: Layout,
+    redirect: '/pdf/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/pdf/index.vue'),
+        name: 'PDF',
+        meta: { title: 'PDF', icon: 'pdf' }
+      }
+    ]
+  },
+  {
+    path: '/pdf/download',
+    component: () => import('@/views/pdf/download.vue'),
+    hidden: true
+  },
+  {
+    path: '/theme',
+    component: Layout,
+    redirect: '/theme/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/theme/index.vue'),
+        name: 'Theme',
+        meta: { title: 'Theme', icon: 'theme' }
+      }
+    ]
+  },
+  {
+    path: '/clipboard',
+    component: Layout,
+    redirect: '/clipboard/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/clipboard/index.vue'),
+        name: 'ClipboardDemo',
+        meta: { title: 'Clipboard', icon: 'clipboard' }
+      }
+    ]
+  },
   tableRouter,
 ]
 
@@ -127,5 +180,20 @@ const router = createRouter({
   history: createWebHistory(),
   routes: constantRoutes
 })
+
+
+export function resetRouter() {
+  // //获取所有路由
+  // router.getRoutes().forEach((route) => {
+  //   const { name } = route;   //获取路由name
+  //   if (name) {
+  //     router.hasRoute(name) && router.removeRoute(name);
+  //   }
+  // });
+  // //重置路由
+  // location.reload();
+
+}
+
 
 export default router;

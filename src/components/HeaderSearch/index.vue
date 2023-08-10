@@ -14,8 +14,8 @@ const search = ref<string>('')
 </script>
 
 <template>
-  <div class="header-search" :class="{ 'show': show }">
-    <svg-icon name="svg-search" @click="click" className="search-icon" />
+  <div class="header-search flex-row" :class="{ 'show': show }">
+    <svg-icon name="svg-search" @click="click" className="search-icon" class="" />
     <el-select ref="headerSearchSelect" v-model="search" placeholder="Search" class="header-search-select" filterable>
       <el-option label="document 1" value="1" />
     </el-select>

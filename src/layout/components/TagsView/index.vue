@@ -12,10 +12,12 @@ onMounted(() => {
   addTags()
 })
 
+
 // 监听路由变化，添加tags
 watch(route, () => {
   addTags()
 })
+
 const tagsViewStore = useTagsViewStore()
 
 // 访问过的tags

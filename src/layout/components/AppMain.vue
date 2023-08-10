@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import { computed, watch } from "vue"
-import { useRoute } from "vue-router"
+import { computed, } from "vue"
+// import { useRoute } from "vue-router"
 import { useTagsViewStore } from "@/store/modules/tagsView";
 
-const route = useRoute()
+// const route = useRoute()
 const tagsViewStore = useTagsViewStore()
 
 // const key = computed(() => {
 //   return route.path
 // })
 
-watch(route, () => {
-  console.log(tagsViewStore.cachedViews);
+// watch(route, () => {
+//   console.log(tagsViewStore.cachedViews);
 
-})
+// })
 
 const cachedViews = computed(() => {
   return tagsViewStore.cachedViews

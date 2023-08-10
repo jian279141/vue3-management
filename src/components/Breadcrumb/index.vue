@@ -19,7 +19,7 @@ const getBreadcrumb = () => {
   let matched: RouteLocationMatched[] = route.matched.filter(item => item.meta && item.meta.title)
 
 
-  console.log(matched)
+  // console.log(matched)
   const first = matched[0]
 
   if (!isDashboard(first)) {

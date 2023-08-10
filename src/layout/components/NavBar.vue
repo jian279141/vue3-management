@@ -43,7 +43,9 @@ export default defineComponent({
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item>Profile</el-dropdown-item>
             <el-dropdown-item>Dashboard</el-dropdown-item>
-            <el-dropdown-item>Github</el-dropdown-item>
+            <a href="https://github.com/jian279141/vue3-management" target="_blank">
+              <el-dropdown-item>Github</el-dropdown-item>
+            </a>
             <el-dropdown-item>Docs</el-dropdown-item>
             <el-dropdown-item divided @click.native="logout">
               <span style="display:block;">Log Out</span>
@@ -120,5 +122,9 @@ export default defineComponent({
       }
     }
   }
+}
+
+a {
+  text-decoration: none;
 }
 </style>

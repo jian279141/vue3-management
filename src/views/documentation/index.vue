@@ -8,7 +8,9 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="">documentation</div>
+  <div class="">
+    documentation
+  </div>
 </template>
 
 <style lang="scss" scoped></style>

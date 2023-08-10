@@ -1,5 +1,11 @@
+// @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import './variables.module.scss';
 @import './sidebar.scss';
+@import './theme.scss';
+
 
 #app{
   height: 100%;
