@@ -162,7 +162,7 @@ const handleDownload = () => {
             <span v-else>0</span>
           </template>
         </el-table-column>
-        <el-table-column label="Status" class-name="status-col" width="100">
+        <el-table-column label="Status" class-name="status-col" width="100" align="center">
           <template #default="{ row }">
             <el-tag :type="statusTranslate(row.status)">
               {{ row.status }}
@@ -171,18 +171,21 @@ const handleDownload = () => {
         </el-table-column>
         <el-table-column label="Actions" align="center" width="230" class-name="small-padding fixed-width">
           <template #default="{ row }">
-            <el-button type="primary" size="small">
-              Edit
-            </el-button>
-            <el-button v-if="row.status != 'published'" size="small" type="success">
-              Publish
-            </el-button>
-            <el-button v-if="row.status != 'draft'" size="small">
-              Draft
-            </el-button>
-            <el-button v-if="row.status != 'deleted'" size="small" type="danger">
-              Delete
-            </el-button>
+            <div class="flex justify-between ">
+              <el-button type="primary" size="small">
+                Edit
+              </el-button>
+              <el-button v-if="row.status != 'published'" size="small" type="success">
+                Publish
+              </el-button>
+              <el-button v-if="row.status != 'draft'" size="small">
+                Draft
+              </el-button>
+              <el-button v-if="row.status != 'deleted'" size="small" type="danger">
+                Delete
+              </el-button>
+            </div>
+
           </template>
         </el-table-column>
       </el-table>

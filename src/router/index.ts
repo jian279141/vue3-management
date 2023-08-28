@@ -24,10 +24,17 @@ export const constantRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/dashboard',
+    redirect: '/dashboard/index',
+    hidden: true,
+    children: []
+  },
+  {
+    path: '/dashboard',
+    component: Layout,
+    redirect: '/dashboard/index',
     children: [
       {
-        path: 'dashboard',
+        path: 'index',
         component: () => import('@/views/dashboard/index.vue'),
         name: 'Dashboard',
         meta: {
@@ -170,6 +177,79 @@ export const asyncRoutes = [
         component: () => import('@/views/clipboard/index.vue'),
         name: 'ClipboardDemo',
         meta: { title: 'Clipboard', icon: 'clipboard' }
+      }
+    ]
+  },
+  {
+    path: '/zip',
+    component: Layout,
+    redirect: '/zip/download',
+    alwaysShow: true,
+    name: 'Zip',
+    meta: { title: 'Zip', icon: 'zip' },
+    children: [
+      {
+        path: 'download',
+        component: () => import('@/views/zip/index.vue'),
+        name: 'ExportZip',
+        meta: { title: 'Export Zip' }
+      }
+    ]
+  },
+  {
+    path: '/tab',
+    component: Layout,
+    redirect: '/tab/index',
+    alwaysShow: true,
+    name: 'Tab',
+    meta: { title: 'Tab', icon: 'tab' },
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/tab/index.vue'),
+        name: 'Tab',
+        meta: { title: 'Tab' }
+      }]
+  },
+  {
+    path: '/charts',
+    component: Layout,
+    redirect: '/charts/linechart',
+    alwaysShow: true,
+    name: 'Charts',
+    meta: { title: 'Charts', icon: 'chart' },
+    children: [
+      {
+        path: 'linechart',
+        component: () => import('@/views/chart/line.vue'),
+        name: 'LineChart',
+        meta: { title: 'Line Chart' }
+      },
+      {
+        path: 'keyboard',
+        component: () => import('@/views/chart/keyboard.vue'),
+        name: 'KeyboardChart',
+        meta: { title: 'Keyboard Chart' }
+      },
+      {
+        path: 'mixchart',
+        component: () => import('@/views/chart/mix-chart.vue'),
+        name: 'MixChart',
+        meta: { title: 'Mix Chart' }
+      }
+    ]
+  },
+  {
+    path: '/profile',
+    component: Layout,
+    redirect: '/profile/index',
+    hidden: true,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/profile/index.vue'),
+        name: 'Profile',
+        meta: { title: 'Profile', icon: 'user', noCache: true }
       }
     ]
   },

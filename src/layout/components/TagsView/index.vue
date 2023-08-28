@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import { onMounted, computed, watch } from "vue"
+import { onMounted, computed, watch, ref } from "vue"
 import ScrollPane from './ScrollPane.vue'
 import { useTagsViewStore } from "@/store/modules/tagsView";
+import { usePermissionStore } from "@/store/modules/permission";
 import { useRoute } from "vue-router";
 import router from "@/router";
 
 const route = useRoute()
-
+const permissionStore = usePermissionStore()
 // 页面加载时，添加tags
 onMounted(() => {
+  initTags()
   addTags()
 })
 
@@ -19,7 +21,16 @@ watch(route, () => {
 })
 
 const tagsViewStore = useTagsViewStore()
+const affixTags = ref()
 
+const initTags = () => {
+  affixTags.value = filterAffixTags(permissionStore.routes)
+  for (const tag of affixTags.value) {
+    if (tag.name) {
+      tagsViewStore.add_view(tag)
+    }
+  }
+}
 // 访问过的tags
 const visitedCache = computed(() => {
   return tagsViewStore.visitedViews
@@ -37,9 +48,10 @@ const filterAffixTags = (routes: any, basePath = '/') => {
   let tags: any[] = []
   routes.forEach((route: any) => {
     if (route.meta && route.meta.affix) {
+      // const tagPath = path.resolve(basePath, route.path)
       tags.push({
-        fullPath: basePath + route.path,
-        path: route.path,
+        fullPath: `${basePath}/${route.path}`,
+        path: `${basePath}/${route.path}`,
         name: route.name,
         meta: { ...route.meta }
       })

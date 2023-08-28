@@ -14,6 +14,10 @@ const logout = async () => {
   await userStore.logout()
   router.push('/login')
 }
+
+const handleProfileClick = () => {
+  router.push('/profile')
+}
 </script>
 <script lang="ts">
 export default defineComponent({
@@ -41,7 +45,7 @@ export default defineComponent({
         </div>
         <template #dropdown>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>Profile</el-dropdown-item>
+            <el-dropdown-item @click="handleProfileClick()">Profile</el-dropdown-item>
             <el-dropdown-item>Dashboard</el-dropdown-item>
             <a href="https://github.com/jian279141/vue3-management" target="_blank">
               <el-dropdown-item>Github</el-dropdown-item>
