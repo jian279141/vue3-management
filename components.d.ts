@@ -8,13 +8,10 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Breadcrumb: typeof import('./src/components/Breadcrumb/index.vue')['default']
-    ElAlert: typeof import('element-plus/es')['ElAlert']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
     ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
-    ElCarousel: typeof import('element-plus/es')['ElCarousel']
-    ElCarouselItem: typeof import('element-plus/es')['ElCarouselItem']
     ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
     ElCheckboxGroup: typeof import('element-plus/es')['ElCheckboxGroup']
     ElCol: typeof import('element-plus/es')['ElCol']
@@ -38,18 +35,17 @@ declare module 'vue' {
     ElSelect: typeof import('element-plus/es')['ElSelect']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
-    ElTab: typeof import('element-plus/es')['ElTab']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
     ElTag: typeof import('element-plus/es')['ElTag']
-    ElTimeline: typeof import('element-plus/es')['ElTimeline']
-    ElTimelineItem: typeof import('element-plus/es')['ElTimelineItem']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
+    GithubCorner: typeof import('./src/components/GithubCorner/index.vue')['default']
     HeaderSearch: typeof import('./src/components/HeaderSearch/index.vue')['default']
     KeyBoard: typeof import('./src/components/Charts/KeyBoard.vue')['default']
     LineMarker: typeof import('./src/components/Charts/LineMarker.vue')['default']
+    Mallki: typeof import('./src/components/TextHoverEffect/Mallki.vue')['default']
     Pagination: typeof import('./src/components/Pagination/index.vue')['default']
     PanThumb: typeof import('./src/components/PanThumb/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
@@ -57,8 +53,5 @@ declare module 'vue' {
     ScreenFull: typeof import('./src/components/ScreenFull/index.vue')['default']
     SizeSelect: typeof import('./src/components/SizeSelect/index.vue')['default']
     SvgIcon: typeof import('./src/components/SvgIcon/index.vue')['default']
-  }
-  export interface ComponentCustomProperties {
-    vLoading: typeof import('element-plus/es')['ElLoadingDirective']
   }
 }

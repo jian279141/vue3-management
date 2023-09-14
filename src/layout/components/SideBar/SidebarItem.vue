@@ -22,7 +22,6 @@ const props = defineProps({
 // 解析路径
 const resolvePath = (routePath: string) => {
   if (isExternal(routePath)) {
-
     return routePath
   }
   if (isExternal(props.basePath)) {

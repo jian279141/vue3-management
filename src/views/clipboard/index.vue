@@ -36,7 +36,7 @@ const copyText = (): void => {
 </script>
 
 <template>
-  <div class="">
+  <div class="clipboard-container">
     <el-tabs v-model="tabItem">
       <el-tab-pane label="use clipboard directly" name="first" class=" flex">
         <el-input v-model="inputData" placeholder="please input" />
@@ -55,4 +55,8 @@ const copyText = (): void => {
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.clipboard-container {
+  padding: 10px;
+}
+</style>

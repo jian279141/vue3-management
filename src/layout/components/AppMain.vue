@@ -41,7 +41,6 @@ const cachedViews = computed(() => {
   width: 100%;
   position: relative;
   overflow: hidden;
-  padding: 10px;
   box-sizing: border-box;
 }
 

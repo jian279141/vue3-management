@@ -3,12 +3,12 @@ import { ref, watch } from "vue"
 const theme = ref(false)
 
 watch(theme, () => {
-  changeTheme(theme.value)
+  changeTheme()
 })
 
 
 
-const changeTheme = (val: Boolean) => {
+const changeTheme = () => {
   const html = document.querySelector('html')
 
   if (html) {

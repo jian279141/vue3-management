@@ -59,7 +59,7 @@ export const constantRoutes = [
         }
       }]
   },
-  // 为了防止刷新页面，动态添加的路由消失，导致not found，所以要在这里添加一下p
+  // 为了防止刷新页面，动态添加的路由消失，导致not found，所以要在这里添加一下
   {
     path: '/:catchAll(.*)*',
     hidden: true,
@@ -70,7 +70,30 @@ export const constantRoutes = [
 ]
 
 export const asyncRoutes = [
-
+  {
+    path: '/example',
+    component: Layout,
+    redirect: '/example/list',
+    name: 'Example',
+    meta: {
+      title: 'Example',
+      icon: 'el-icon-s-help'
+    },
+    children: [
+      {
+        path: 'create',
+        component: () => import('@/views/example/create.vue'),
+        name: 'CreateArticle',
+        meta: { title: 'Create Article', icon: 'edit' }
+      },
+      {
+        path: 'list',
+        component: () => import('@/views/example/list.vue'),
+        name: 'ArticleList',
+        meta: { title: 'Article List', icon: 'list' }
+      }
+    ]
+  },
   {
     path: '/permission',
     component: Layout,
@@ -254,6 +277,17 @@ export const asyncRoutes = [
     ]
   },
   tableRouter,
+  // 外链接
+  {
+    path: '/external-link',
+    component: Layout,
+    children: [
+      {
+        path: 'https://github.com/jian279141/vue3-management',
+        meta: { title: 'External Link', icon: 'link' }
+      }
+    ]
+  },
 ]
 
 const router = createRouter({
