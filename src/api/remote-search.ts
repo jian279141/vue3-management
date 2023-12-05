@@ -2,7 +2,7 @@ import request from '@/utils/request';
 
 export function searchUser(name: string) {
   return request({
-    url: '/vue-admin-admin/search/user',
+    url: '/vue-admin-template/search/user',
     method: 'get',
     params: { name }
   })

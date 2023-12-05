@@ -12,3 +12,11 @@ export function fetchList(query: QueryType) {
     params: query
   })
 }
+
+export function fetchArticle(id: string) {
+  return request({
+    url: '/vue-admin-template/article/detail',
+    method: 'get',
+    params: { id }
+  })
+}

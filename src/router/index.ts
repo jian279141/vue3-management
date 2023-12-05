@@ -91,6 +91,13 @@ export const asyncRoutes = [
         component: () => import('@/views/example/list.vue'),
         name: 'ArticleList',
         meta: { title: 'Article List', icon: 'list' }
+      },
+      {
+        path: 'edit/:id(\\d+)',
+        component: () => import('@/views/example/edit.vue'),
+        hidden: true,
+        name: 'EditArticle',
+        meta: { title: 'Edit Article', noCache: true, activeMenu: '/example/list' },
       }
     ]
   },

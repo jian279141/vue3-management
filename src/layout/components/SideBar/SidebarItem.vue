@@ -84,7 +84,7 @@ export default defineComponent({
       <!-- <SidebarItem v-for="child in item.children" :key="child.path" :item="child" :isNest="true"
         :basePath="resolvePath(item.path)" class="nest-menu" /> -->
       <router-link v-for="child in item.children" :key="child.path" :to="resolveSubPath(child.path)">
-        <el-menu-item :index="child.path">{{ child.path }}</el-menu-item>
+        <el-menu-item v-if="!child.hidden" :index="child.path">{{ child.path }}</el-menu-item>
       </router-link>
     </el-sub-menu>
 

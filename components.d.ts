@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Breadcrumb: typeof import('./src/components/Breadcrumb/index.vue')['default']
+    ElAlert: typeof import('element-plus/es')['ElAlert']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
     ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
     ElButton: typeof import('element-plus/es')['ElButton']
@@ -15,6 +16,8 @@ declare module 'vue' {
     ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
     ElCheckboxGroup: typeof import('element-plus/es')['ElCheckboxGroup']
     ElCol: typeof import('element-plus/es')['ElCol']
+    ElDatePicker: typeof import('element-plus/es')['ElDatePicker']
+    ElDrawdownMenu: typeof import('element-plus/es')['ElDrawdownMenu']
     ElDropdown: typeof import('element-plus/es')['ElDropdown']
     ElDropdownItem: typeof import('element-plus/es')['ElDropdownItem']
     ElDropdownMenu: typeof import('element-plus/es')['ElDropdownMenu']
@@ -30,6 +33,7 @@ declare module 'vue' {
     ElRadio: typeof import('element-plus/es')['ElRadio']
     ElRadioButton: typeof import('element-plus/es')['ElRadioButton']
     ElRadioGroup: typeof import('element-plus/es')['ElRadioGroup']
+    ElRate: typeof import('element-plus/es')['ElRate']
     ElRow: typeof import('element-plus/es')['ElRow']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSelect: typeof import('element-plus/es')['ElSelect']
@@ -46,12 +50,15 @@ declare module 'vue' {
     KeyBoard: typeof import('./src/components/Charts/KeyBoard.vue')['default']
     LineMarker: typeof import('./src/components/Charts/LineMarker.vue')['default']
     Mallki: typeof import('./src/components/TextHoverEffect/Mallki.vue')['default']
+    MDinput: typeof import('./src/components/MDinput/index.vue')['default']
     Pagination: typeof import('./src/components/Pagination/index.vue')['default']
     PanThumb: typeof import('./src/components/PanThumb/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ScreenFull: typeof import('./src/components/ScreenFull/index.vue')['default']
     SizeSelect: typeof import('./src/components/SizeSelect/index.vue')['default']
+    Sticky: typeof import('./src/components/Sticky/index.vue')['default']
     SvgIcon: typeof import('./src/components/SvgIcon/index.vue')['default']
+    Tinymce: typeof import('./src/components/Tinymce/index.vue')['default']
   }
 }

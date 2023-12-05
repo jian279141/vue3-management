@@ -3,11 +3,15 @@ import { ElMessage, ElMessageBox } from 'element-plus'
 import { useUserStore } from '@/store/modules/user'
 import { getToken } from '@/utils/auth'
 
+
+
 const service = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_URL,// url = base url + request url
-  timeout: 5000
+  timeout: 5000,
 })
 // console.log(import.meta.env.VITE_APP_BASE_URL);
+
+
 
 
 // Request interceptors
@@ -19,6 +23,10 @@ service.interceptors.request.use(
       // 让每个请求携带token--['X-Token']为自定义key 请根据实际情况自行修改
       config.headers['X-Token'] = getToken()
     }
+    // // 如果请求头是form-data
+    // if (config.headers['Content-Type'] === 'application/x-www-form-urlencoded') {
+    //   config.data = qs.stringify(config.data)
+    // }
     return config
   },
   error => {
