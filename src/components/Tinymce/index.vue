@@ -1,13 +1,5 @@
 <script setup lang="ts">
-import {
-  defineComponent,
-  onMounted,
-  onUnmounted,
-  ref,
-  nextTick,
-  onActivated,
-  onDeactivated,
-} from "vue";
+import { defineComponent, onMounted } from "vue";
 const props = defineProps({
   content: {
     type: String,
@@ -23,7 +15,7 @@ const props = defineProps({
 const initObj = {
   selector: "#tinymce",
   language: "zh_CN",
-  setup(editor) {
+  setup(editor: any) {
     editor.on("init", () => {
       editor.setContent(props.content);
     });
@@ -32,7 +24,7 @@ const initObj = {
 
 const emit = defineEmits(["update:tinyKey"]);
 
-const tinymceKey = ref(0);
+// const tinymceKey = ref(0);
 
 onMounted(() => {
   tinymce.remove();

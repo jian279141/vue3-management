@@ -198,6 +198,19 @@ export const asyncRoutes = [
     ]
   },
   {
+    path: '/commonform',
+    component: Layout,
+    redirect: '/commonform/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/commonForm/index.vue'),
+        name: 'commonForm',
+        meta: { title: 'commonForm', icon: 'theme' }
+      }
+    ]
+  },
+  {
     path: '/clipboard',
     component: Layout,
     redirect: '/clipboard/index',

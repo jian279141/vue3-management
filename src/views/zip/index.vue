@@ -1,52 +1,50 @@
 <script setup lang="ts">
-import { defineComponent, onMounted, ref } from "vue"
-import { fetchList } from "@/api/article"
+import { defineComponent, onMounted, ref } from "vue";
+import { fetchList } from "@/api/article";
 
-
-
-const listData = ref()
-const fileName = ''
-
+const listData = ref();
+const fileName = ref("default file name");
 
 onMounted(() => {
-  getList()
-})
+  getList();
+});
 
 const getList = async () => {
-  const { data } = await fetchList()
-  listData.value = data.items
-}
+  const { data } = await fetchList({});
+  listData.value = data.items;
+};
 
 const handleDownload = () => {
-  import('@/vendor/Export2Zip').then((zip) => {
-    const tHeader = ['ID', 'Title', 'Author', 'Readings', 'Date']
-    const filterVal = ['id', 'title', 'author', 'pageviews', 'display_time']
-    const list = listData.value
-    const data = formatJson(filterVal, list)
-    zip.export2zip(tHeader, data, fileName, fileName)
-  }
-  )
-}
+  import("@/vendor/Export2Zip").then((zip) => {
+    const tHeader = ["ID", "Title", "Author", "Readings", "Date"];
+    const filterVal = ["id", "title", "author", "pageviews", "display_time"];
+    const list = listData.value;
+    const data = formatJson(filterVal, list);
+    zip.export2zip(tHeader, data, fileName.value, fileName.value);
+  });
+};
 
-const formatJson = (filterVal, jsonData) => {
-  return jsonData.map((v) => filterVal.map((j) => v[j]))
-}
-
-
+const formatJson = (filterVal: any, jsonData: any) => {
+  return jsonData.map((v: any) => filterVal.map((j: any) => v[j]));
+};
 </script>
 
 <script lang="ts">
 export default defineComponent({
-  name: 'ZipExport',
-})
+  name: "ZipExport",
+});
 </script>
 
 <template>
   <div class="app-container">
-    <el-input v-model="fileName" placeholder="Please enter the file name (default file)" style="width:300px;"
-      prefix-icon="Document" />
+    <el-input
+      v-model="fileName"
+      placeholder="Please enter the file name (default file)"
+      style="width: 300px"
+      prefix-icon="Document"
+    />
     <el-button type="primary" @click="handleDownload" class="export-button">
-      <el-icon style="margin-right:5px">
+      <el-icon style="margin-right: 5px">
         <Document />
       </el-icon>
       Export
@@ -55,7 +53,13 @@ export default defineComponent({
     <!-- table -->
 
     <el-table :data="listData" border fit highlight-current-row>
-      <el-table-column label="ID" prop="id" sortable="custom" align="center" width="80">
+      <el-table-column
+        label="ID"
+        prop="id"
+        sortable="custom"
+        align="center"
+        width="80"
+      >
         <template #default="{ row }">
           <span>{{ row.id }}</span>
         </template>
